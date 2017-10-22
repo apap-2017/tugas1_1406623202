@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}">Lihat Data Keluarga</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">SI Kependudukan</a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Cari Data</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/penduduk/add}">Tambah Data Penduduk</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/keluarga/add}">Tambah Data Keluarga</a>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+	
+	<div class="container" style="margin:30px;">
+    	<h2 th:text="'Nomor KK = ' + ${keluarga.nomor_kk}">Nomor KK</h2>
+		<h2 th:text="'Alamat = ' + ${keluarga.alamat.alamat}">Alamat</h2>
+		<h2 th:text="'RT/RW = ' + ${keluarga.alamat.rt} + '/' + ${keluarga.alamat.rw}">RT/RW</h2>
+		<h2 th:text="'Kelurahan/Desa = ' + ${keluarga.alamat.kelurahan}">Kelurahan</h2>
+		<h2 th:text="'Kecamatan = ' + ${keluarga.alamat.kecamatan}">Kecamatan</h2>
+		<h2 th:text="'Kota = ' + ${keluarga.alamat.kota}">Kota</h2>
+    	
+    	
+    	<table class="table table-hover table-striped dataTable" id="example">
+	   		<thead>
+		   		<tr>
+					<th>No.</th>
+					<th>Nama Lengkap</th>
+					<th>NIK</th>
+					<th>Jenis Kelamin</th>
+					<th>Tempat Lahir</th>
+					<th>Tanggal Lahir</th>
+					<th>Agama</th>
+					<th>Pekerjaan</th>
+					<th>Status Perkawinan</th>
+					<th>Status dalam Keluarga</th>
+					<th>Kewarnegaraan</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="anggota, iterationStatus: ${keluarga.anggota_keluarga}">
+					<td th:text="${iterationStatus.count}">1</td>
+					<td th:text="${anggota.nama}">Nama</td>   
+			       	<td th:text="${anggota.nik}">NIK</td>
+			       	<td th:text="${anggota.jenis_kelamin} ? 'Perempuan' : 'Laki-laki' ">Status Kematian</td>
+			       	<td th:text="${anggota.tempat_lahir}">Tempat Lahir</td>
+			       	<td th:text="${anggota.tanggal_lahir}">Tanggal Lahir</td>
+			       	<td th:text="${anggota.agama}">Agama</td>
+					<td th:text="${anggota.pekerjaan}">Pekerjaan</td>
+			       	<td th:text="${anggota.is_married}">Status Perkawinan</td>
+      				<td th:text="${anggota.status_keluarga}">Status dalam Keluarga</td>
+			       	
+		       		<td th:text="${anggota.kewarnegaraan} ? 'WNI' : 'WNA'">Kewarnegaraan</td>
+		  
+				</tr>
+			</tbody>
+    	</table>
+	</div>
+</body>
+
+<div th:fragment="js">
+	<script>
+		$(document).ready(function() {
+		    $('#example').dataTable();
+		} );
+	</script>
+</div>
+</html>

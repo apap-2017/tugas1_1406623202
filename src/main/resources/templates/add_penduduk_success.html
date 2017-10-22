@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}">Berhasil Mendaftar</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+   	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">SI Kependudukan</a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Cari Data</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/penduduk/add}">Tambah Data Penduduk</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/keluarga/add}">Tambah Data Keluarga</a>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+	
+	
+	<div class="container" style="margin:30px;">
+		<h3>Sukses !</h3>
+		<small th:text="'Penduduk dengan NIK ' + ${penduduk.nik} + ' berhasil ditambahkan'">NIK</small>
+		
+		<br />
+		
+		<h3 th:text="'NIK = ' + ${penduduk.nik}">NIK</h3>
+       	<h3 th:text="'Nama = ' + ${penduduk.nama}">Nama</h3>
+       	<h3 th:text="'Tempat/Tanggal Lahir = ' + ${penduduk.tempat_lahir} + '/' + ${penduduk.tanggal_lahir}">Tempat/Tanggal Lahir</h3>
+     	
+		<h3 th:text="'Alamat = ' + ${penduduk.alamat.alamat}">Alamat</h3>
+		<h3 th:text="'RT/RW = ' + ${penduduk.alamat.rt} + '/' + ${penduduk.alamat.rw}">RT/RW</h3>
+		<h3 th:text="'Kelurahan/Desa = ' + ${penduduk.alamat.kelurahan}">Kelurahan</h3>
+		<h3 th:text="'Kecamatan = ' + ${penduduk.alamat.kecamatan}">Kecamatan</h3>
+		<h3 th:text="'Kota = ' + ${penduduk.alamat.kota}">Kota</h3>
+		
+       	<h3 th:text="'Golongan Darah = ' + ${penduduk.goldar}">Golongan Darah</h3>
+       	<h3 th:text="'Agama = ' + ${penduduk.agama}">Agama</h3>
+       	<h3 th:text="'Status Perkawinan = ' + ${penduduk.is_married}">Status Perkawinan</h3>
+       	<h3 th:text="'Pekerjaan = ' + ${penduduk.pekerjaan}">Pekerjaan</h3>
+       	
+       	<h3 th:text="${penduduk.kewarnegaraan} ? 'WNI' : 'WNA'">Kewarnegaraan</h3>
+       	
+       	<h3 th:text="${penduduk.has_died} ? 'Wafat' : 'Hidup'">Status Kematian</h3> 
+    </div>
+
+</body>
+</html>

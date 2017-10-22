@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SI Kependudukan</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+
+	<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+	<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	<script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">SI Kependudukan</a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Cari Data</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/penduduk/add}">Tambah Data Penduduk</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/keluarga/add}">Tambah Data Keluarga</a>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+	
+	<div class="container" style="margin:30px;">
+				
+		<h1>Bootstrap starter template</h1>
+		<p class="lead">Use this document as a way to quickly start any new project.<br /> All you get is this text and a mostly barebones HTML document.</p>
+		<form th:action="@{/penduduk}" method="get">
+			<div class="form-group">
+			    <label for="cari-penduduk">Lihat data penduduk berdasarkan NIK</label>
+			    <input type="text" class="form-control" name="nik" id="cari-penduduk" />
+			    <small class="form-text text-muted">Masukkan Nomor Induk Kependudukan (NIK).</small>
+			    
+			    <button type="submit" id="search-btn" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+		
+		<form th:action="@{/keluarga}" method="get">
+			<div class="form-group">
+			    <label for="cari-keluarga">Lihat data keluarga berdasarkan NKK</label>
+			    <input type="text" class="form-control" name="nomor_kk" id="cari-keluarga" />
+			    <small class="form-text text-muted">Masukkan Nomor Kartu Keluarga (NKK).</small>
+			    
+			    <button type="submit" id="search-btn" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+
+    </div>
+	
+</body>
+</html>

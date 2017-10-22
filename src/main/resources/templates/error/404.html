@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>404 Not found</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">SI Kependudukan</a>
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/}">Cari Data</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/penduduk/add}">Tambah Data Penduduk</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/keluarga/add}">Tambah Data Keluarga</a>
+				</li>
+			</ul>
+
+		</div>
+	</nav>
+	
+	<div class="container" style="margin:30px;">
+		<h2>Halaman tidak ditemukan</h2>
+	</div>
+</body>
+</html>
